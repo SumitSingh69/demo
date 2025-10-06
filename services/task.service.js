@@ -42,3 +42,14 @@ export const updateTaskStatusService = async (taskId, taskBody) => {
   }
 };
 
+export const deleteTaskService = async (taskId) => {
+    try{
+        const deletedTask = await Task.findByIdAndDelete(taskId);
+        if(!deletedTask){
+            throw new Error("No such task found");
+        }
+        return {message: "Task deleted successfully", data: deletedTask};
+    }catch(err){
+        throw new Error("Failed to delete task");
+    }
+}
