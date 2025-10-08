@@ -2,7 +2,7 @@ import Task from "../models/task.model.js";
 
 export const createTaskService = async (taskData) => {
   try {
-    console.log("hi");
+    
     const newTask = new Task(taskData);
     await newTask.save();
     return { message: "Task created successfully" };
